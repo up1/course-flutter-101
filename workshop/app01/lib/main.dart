@@ -1,4 +1,5 @@
 import 'package:app01/calculator.dart';
+import 'package:app01/calculator_responsive.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text('My Calculator'),
         ),
-        body: const Calculator(title: 'My Calculator'),
+        body: const ResponsiveCalculatorScreen(),
       ),
     );
   }
