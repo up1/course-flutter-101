@@ -1,52 +1,52 @@
-import 'package:get/get.dart';
+class CalculatorData {
+  String result = "";
+  String operator = "";
+  String operand = "";
+}
 
-class CalculatorLogic extends GetxController {
-  var result = "".obs;
-  var operator = "".obs;
-  var operand = "".obs;
+class CalculatorLogic {
+  String result = "";
+  String operator = "";
+  String operand = "";
 
   void onNumberButtonPressed(int number) {
-    result.value += number.toString();
+    result += number.toString();
   }
 
   void onOperatorButtonPressed(String operator) {
-    if (this.operator.value == "") {
-      this.operator.value = operator;
-      operand.value = result.value;
-      result.value = "";
+    if (this.operator == "") {
+      this.operator = operator;
+      operand = result;
+      result = "";
     } else {
-      this.operator.value = "";
+      this.operator = "";
     }
   }
 
   void onCalculateButtonPressed() {
-    if (operator.value != "" && operand.value != "") {
-      switch (operator.value) {
+    if (operator != "" && operand != "") {
+      switch (operator) {
         case "+":
-          result.value =
-              (int.parse(operand.value) + int.parse(result.value)).toString();
+          result = (int.parse(operand) + int.parse(result)).toString();
           break;
         case "-":
-          result.value =
-              (int.parse(operand.value) - int.parse(result.value)).toString();
+          result = (int.parse(operand) - int.parse(result)).toString();
           break;
         case "x":
-          result.value =
-              (int.parse(operand.value) * int.parse(result.value)).toString();
+          result = (int.parse(operand) * int.parse(result)).toString();
           break;
         case "/":
-          result.value =
-              (int.parse(operand.value) / int.parse(result.value)).toString();
+          result = (int.parse(operand) / int.parse(result)).toString();
           break;
       }
-      operator.value = "";
-      operand.value = "";
+      operator = "";
+      operand = "";
     }
   }
 
   void clear() {
-    result.value = "";
-    operator.value = "";
-    operand.value = "";
+    result = "";
+    operator = "";
+    operand = "";
   }
 }

@@ -2,7 +2,6 @@ import 'package:app01/button.dart';
 import 'package:app01/result.dart';
 import 'package:flutter/material.dart';
 import 'package:app01/calculator_logic.dart';
-import 'package:get/get.dart';
 
 class Calculator extends StatefulWidget {
   const Calculator({Key? key, required this.title}) : super(key: key);
@@ -18,14 +17,14 @@ class _CalculatorState extends State<Calculator> {
   String operator = "";
   String operand = "";
 
-  final calculatorLogic = Get.put(CalculatorLogic());
+  final calculatorLogic = CalculatorLogic();
 
   @override
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
       child: Column(children: [
-        Obx(() => ResultDisplay(result: calculatorLogic.result.value)),
+        ResultDisplay(result: result),
         Row(
           children: [
             createCalculatorButton(
@@ -111,10 +110,11 @@ class _CalculatorState extends State<Calculator> {
   }
 
   void setResults() {
-    calculatorLogic.update();
-    result = calculatorLogic.result.value;
-    operand = calculatorLogic.operand.value;
-    operator = calculatorLogic.operator.value;
+    setState(() {
+      result = calculatorLogic.result;
+      operand = calculatorLogic.operand;
+      operator = calculatorLogic.operator;
+    });
   }
 
   Widget createCalculatorButton(
