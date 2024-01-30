@@ -1,6 +1,7 @@
 import 'package:app01/button.dart';
 import 'package:app01/result.dart';
 import 'package:flutter/material.dart';
+import 'package:app01/calculator_logic.dart';
 
 class Calculator extends StatefulWidget {
   const Calculator({Key? key, required this.title}) : super(key: key);
@@ -15,6 +16,8 @@ class _CalculatorState extends State<Calculator> {
   String result = "";
   String operator = "";
   String operand = "";
+
+  final calculatorLogic = CalculatorLogic();
 
   @override
   Widget build(BuildContext context) {
@@ -87,51 +90,30 @@ class _CalculatorState extends State<Calculator> {
   }
 
   void onNumberButtonPressed(int number) {
-    setState(() {
-      result += number.toString();
-    });
+    calculatorLogic.onNumberButtonPressed(number);
+    setResults();
   }
 
   void onOperatorButtonPressed(String operator) {
-    setState(() {
-      if (this.operator == "") {
-        this.operator = operator;
-        operand = result;
-        result = "";
-      } else {
-        this.operator = "";
-      }
-    });
+    calculatorLogic.onOperatorButtonPressed(operator);
+    setResults();
   }
 
   void onCalculateButtonPressed() {
-    setState(() {
-      if (operator != "" && operand != "") {
-        switch (operator) {
-          case "+":
-            result = (int.parse(operand) + int.parse(result)).toString();
-            break;
-          case "-":
-            result = (int.parse(operand) - int.parse(result)).toString();
-            break;
-          case "x":
-            result = (int.parse(operand) * int.parse(result)).toString();
-            break;
-          case "/":
-            result = (int.parse(operand) / int.parse(result)).toString();
-            break;
-        }
-        operator = "";
-        operand = "";
-      }
-    });
+    calculatorLogic.onCalculateButtonPressed();
+    setResults();
   }
 
   void clear() {
+    calculatorLogic.clear();
+    setResults();
+  }
+
+  void setResults() {
     setState(() {
-      result = "";
-      operator = "";
-      operand = "";
+      result = calculatorLogic.result;
+      operand = calculatorLogic.operand;
+      operator = calculatorLogic.operator;
     });
   }
 
