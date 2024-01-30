@@ -1,7 +1,7 @@
-import 'package:app01/button.dart';
+import 'package:app01/controllers/calculator_logic.dart';
 import 'package:app01/result.dart';
+import 'package:app01/views/button.dart';
 import 'package:flutter/material.dart';
-import 'package:app01/calculator_logic.dart.getx';
 import 'package:get/get.dart';
 
 class Calculator extends StatefulWidget {
