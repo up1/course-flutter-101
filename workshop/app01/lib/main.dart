@@ -1,5 +1,7 @@
 import 'package:app01/calculator.dart';
+import 'package:app01/calculator_logic.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,20 +12,26 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'My Calculator',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.white),
-        scaffoldBackgroundColor:
-            Colors.white, // Set the default background color to white
-        useMaterial3: true,
-      ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('My Calculator'),
+    return ChangeNotifierProvider(
+      create: (context) => CalculatorLogic(),
+      child: MaterialApp(
+        home: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'My Calculator',
+          theme: ThemeData(
+            colorScheme:
+                ColorScheme.fromSwatch().copyWith(secondary: Colors.white),
+            scaffoldBackgroundColor:
+                Colors.white, // Set the default background color to white
+            useMaterial3: true,
+          ),
+          home: Scaffold(
+            appBar: AppBar(
+              title: const Text('My Calculator'),
+            ),
+            body: const Calculator(title: 'My Calculator'),
+          ),
         ),
-        body: const Calculator(title: 'My Calculator'),
       ),
     );
   }

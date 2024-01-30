@@ -1,19 +1,16 @@
-import 'package:flutter/foundation.dart';
-
 class CalculatorData {
   String result = "";
   String operator = "";
   String operand = "";
 }
 
-class CalculatorLogic extends ChangeNotifier {
+class CalculatorLogic {
   String result = "";
   String operator = "";
   String operand = "";
 
   void onNumberButtonPressed(int number) {
     result += number.toString();
-    notifyListeners();
   }
 
   void onOperatorButtonPressed(String operator) {
@@ -24,7 +21,6 @@ class CalculatorLogic extends ChangeNotifier {
     } else {
       this.operator = "";
     }
-    notifyListeners();
   }
 
   void onCalculateButtonPressed() {
@@ -45,7 +41,6 @@ class CalculatorLogic extends ChangeNotifier {
       }
       operator = "";
       operand = "";
-      notifyListeners();
     }
   }
 
@@ -53,6 +48,5 @@ class CalculatorLogic extends ChangeNotifier {
     result = "";
     operator = "";
     operand = "";
-    notifyListeners();
   }
 }
