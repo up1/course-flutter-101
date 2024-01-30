@@ -19,7 +19,7 @@ class CalculatorButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: const EdgeInsets.all(6),
+        padding: const EdgeInsets.all(5),
         child: Material(
           color: Colors.transparent,
           child: Ink(
@@ -28,7 +28,7 @@ class CalculatorButton extends StatelessWidget {
             decoration: BoxDecoration(
                 boxShadow: const [
                   BoxShadow(
-                      color: Colors.black, offset: Offset(1, 1), blurRadius: 2),
+                      color: Colors.black, offset: Offset(1, 1), blurRadius: 1),
                 ],
                 borderRadius: BorderRadius.all(Radius.circular(size / 2)),
                 color: backgroundColor),

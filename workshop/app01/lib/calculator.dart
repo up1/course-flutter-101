@@ -25,7 +25,10 @@ class _CalculatorState extends State<Calculator> {
             createCalculatorButton(text: "7", onTap: () => {}),
             createCalculatorButton(text: "8", onTap: () => {}),
             createCalculatorButton(text: "9", onTap: () => {}),
-            createCalculatorButton(text: "x", onTap: () => {}),
+            createCalculatorButton(
+                text: "x",
+                onTap: () => {},
+                backgroundColor: const Color.fromRGBO(220, 220, 220, 1)),
           ],
         ),
         Row(
@@ -33,7 +36,10 @@ class _CalculatorState extends State<Calculator> {
             createCalculatorButton(text: "4", onTap: () => {}),
             createCalculatorButton(text: "5", onTap: () => {}),
             createCalculatorButton(text: "6", onTap: () => {}),
-            createCalculatorButton(text: "/", onTap: () => {}),
+            createCalculatorButton(
+                text: "/",
+                onTap: () => {},
+                backgroundColor: const Color.fromRGBO(220, 220, 220, 1)),
           ],
         ),
         Row(
@@ -41,15 +47,28 @@ class _CalculatorState extends State<Calculator> {
             createCalculatorButton(text: "1", onTap: () => {}),
             createCalculatorButton(text: "2", onTap: () => {}),
             createCalculatorButton(text: "3", onTap: () => {}),
-            createCalculatorButton(text: "+", onTap: () => {}),
+            createCalculatorButton(
+                text: "+",
+                onTap: () => {},
+                backgroundColor: const Color.fromRGBO(220, 220, 220, 1)),
           ],
         ),
         Row(
           children: [
-            createCalculatorButton(text: "=", onTap: () => {}),
+            createCalculatorButton(
+                text: "=",
+                onTap: () => {},
+                backgroundColor: Colors.orange,
+                textColor: Colors.white),
             createCalculatorButton(text: "0", onTap: () => {}),
-            createCalculatorButton(text: "C", onTap: () => {}),
-            createCalculatorButton(text: "-", onTap: () => {}),
+            createCalculatorButton(
+                text: "C",
+                onTap: () => {},
+                backgroundColor: const Color.fromRGBO(220, 220, 220, 1)),
+            createCalculatorButton(
+                text: "-",
+                onTap: () => {},
+                backgroundColor: const Color.fromRGBO(220, 220, 220, 1)),
           ],
         )
       ]),
