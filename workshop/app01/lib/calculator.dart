@@ -12,19 +12,24 @@ class Calculator extends StatefulWidget {
 }
 
 class _CalculatorState extends State<Calculator> {
-  int result = 0;
+  String result = "";
+  String operator = "";
+  String operand = "";
 
   @override
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
       child: Column(children: [
-        ResultDisplay(result: result.toInt()),
+        ResultDisplay(result: result),
         Row(
           children: [
-            createCalculatorButton(text: "7", onTap: () => {}),
-            createCalculatorButton(text: "8", onTap: () => {}),
-            createCalculatorButton(text: "9", onTap: () => {}),
+            createCalculatorButton(
+                text: "7", onTap: () => onNumberButtonPressed(7)),
+            createCalculatorButton(
+                text: "8", onTap: () => onNumberButtonPressed(8)),
+            createCalculatorButton(
+                text: "9", onTap: () => onNumberButtonPressed(9)),
             createCalculatorButton(
                 text: "x",
                 onTap: () => {},
@@ -33,9 +38,12 @@ class _CalculatorState extends State<Calculator> {
         ),
         Row(
           children: [
-            createCalculatorButton(text: "4", onTap: () => {}),
-            createCalculatorButton(text: "5", onTap: () => {}),
-            createCalculatorButton(text: "6", onTap: () => {}),
+            createCalculatorButton(
+                text: "4", onTap: () => onNumberButtonPressed(4)),
+            createCalculatorButton(
+                text: "5", onTap: () => onNumberButtonPressed(5)),
+            createCalculatorButton(
+                text: "6", onTap: () => onNumberButtonPressed(6)),
             createCalculatorButton(
                 text: "/",
                 onTap: () => {},
@@ -44,12 +52,15 @@ class _CalculatorState extends State<Calculator> {
         ),
         Row(
           children: [
-            createCalculatorButton(text: "1", onTap: () => {}),
-            createCalculatorButton(text: "2", onTap: () => {}),
-            createCalculatorButton(text: "3", onTap: () => {}),
+            createCalculatorButton(
+                text: "1", onTap: () => onNumberButtonPressed(1)),
+            createCalculatorButton(
+                text: "2", onTap: () => onNumberButtonPressed(2)),
+            createCalculatorButton(
+                text: "3", onTap: () => onNumberButtonPressed(3)),
             createCalculatorButton(
                 text: "+",
-                onTap: () => {},
+                onTap: () => onOperatorButtonPressed("+"),
                 backgroundColor: const Color.fromRGBO(220, 220, 220, 1)),
           ],
         ),
@@ -57,22 +68,71 @@ class _CalculatorState extends State<Calculator> {
           children: [
             createCalculatorButton(
                 text: "=",
-                onTap: () => {},
+                onTap: () => onCalculateButtonPressed(),
                 backgroundColor: Colors.orange,
                 textColor: Colors.white),
             createCalculatorButton(text: "0", onTap: () => {}),
             createCalculatorButton(
                 text: "C",
-                onTap: () => {},
+                onTap: () => clear(),
                 backgroundColor: const Color.fromRGBO(220, 220, 220, 1)),
             createCalculatorButton(
                 text: "-",
-                onTap: () => {},
+                onTap: () => onOperatorButtonPressed("-"),
                 backgroundColor: const Color.fromRGBO(220, 220, 220, 1)),
           ],
         )
       ]),
     );
+  }
+
+  void onNumberButtonPressed(int number) {
+    setState(() {
+      result += number.toString();
+    });
+  }
+
+  void onOperatorButtonPressed(String operator) {
+    setState(() {
+      if (this.operator == "") {
+        this.operator = operator;
+        operand = result;
+        result = "";
+      } else {
+        this.operator = "";
+      }
+    });
+  }
+
+  void onCalculateButtonPressed() {
+    setState(() {
+      if (operator != "" && operand != "") {
+        switch (operator) {
+          case "+":
+            result = (int.parse(operand) + int.parse(result)).toString();
+            break;
+          case "-":
+            result = (int.parse(operand) - int.parse(result)).toString();
+            break;
+          case "x":
+            result = (int.parse(operand) * int.parse(result)).toString();
+            break;
+          case "/":
+            result = (int.parse(operand) / int.parse(result)).toString();
+            break;
+        }
+        operator = "";
+        operand = "";
+      }
+    });
+  }
+
+  void clear() {
+    setState(() {
+      result = "";
+      operator = "";
+      operand = "";
+    });
   }
 
   Widget createCalculatorButton(

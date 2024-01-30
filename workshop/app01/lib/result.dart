@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class ResultDisplay extends StatelessWidget {
   const ResultDisplay({Key? key, required this.result}) : super(key: key);
 
-  final int result;
+  final String result;
 
   @override
   Widget build(BuildContext context) {
