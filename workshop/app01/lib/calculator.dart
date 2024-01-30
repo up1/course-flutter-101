@@ -22,80 +22,51 @@ class _CalculatorState extends State<Calculator> {
         ResultDisplay(result: result.toInt()),
         Row(
           children: [
-            CalculatorButton(
-              label: '7',
-              onTap: () => {},
-              size: 90,
-              backgroundColor: Colors.white,
-              labelColor: Colors.black,
-            ),
-            CalculatorButton(
-              label: '8',
-              onTap: () => {},
-              size: 90,
-              backgroundColor: Colors.white,
-              labelColor: Colors.black,
-            ),
-            CalculatorButton(
-              label: '9',
-              onTap: () => {},
-              size: 90,
-              backgroundColor: Colors.white,
-              labelColor: Colors.black,
-            )
+            createCalculatorButton(text: "7", onTap: () => {}),
+            createCalculatorButton(text: "8", onTap: () => {}),
+            createCalculatorButton(text: "9", onTap: () => {}),
+            createCalculatorButton(text: "x", onTap: () => {}),
           ],
         ),
         Row(
           children: [
-            CalculatorButton(
-              label: '4',
-              onTap: () => {},
-              size: 90,
-              backgroundColor: Colors.white,
-              labelColor: Colors.black,
-            ),
-            CalculatorButton(
-              label: '5',
-              onTap: () => {},
-              size: 90,
-              backgroundColor: Colors.white,
-              labelColor: Colors.black,
-            ),
-            CalculatorButton(
-              label: '6',
-              onTap: () => {},
-              size: 90,
-              backgroundColor: Colors.white,
-              labelColor: Colors.black,
-            )
+            createCalculatorButton(text: "4", onTap: () => {}),
+            createCalculatorButton(text: "5", onTap: () => {}),
+            createCalculatorButton(text: "6", onTap: () => {}),
+            createCalculatorButton(text: "/", onTap: () => {}),
           ],
         ),
         Row(
           children: [
-            CalculatorButton(
-              label: '1',
-              onTap: () => {},
-              size: 90,
-              backgroundColor: Colors.white,
-              labelColor: Colors.black,
-            ),
-            CalculatorButton(
-              label: '2',
-              onTap: () => {},
-              size: 90,
-              backgroundColor: Colors.white,
-              labelColor: Colors.black,
-            ),
-            CalculatorButton(
-              label: '3',
-              onTap: () => {},
-              size: 90,
-              backgroundColor: Colors.white,
-              labelColor: Colors.black,
-            )
+            createCalculatorButton(text: "1", onTap: () => {}),
+            createCalculatorButton(text: "2", onTap: () => {}),
+            createCalculatorButton(text: "3", onTap: () => {}),
+            createCalculatorButton(text: "+", onTap: () => {}),
+          ],
+        ),
+        Row(
+          children: [
+            createCalculatorButton(text: "=", onTap: () => {}),
+            createCalculatorButton(text: "0", onTap: () => {}),
+            createCalculatorButton(text: "C", onTap: () => {}),
+            createCalculatorButton(text: "-", onTap: () => {}),
           ],
         )
       ]),
+    );
+  }
+
+  Widget createCalculatorButton(
+      {required String text,
+      required Function onTap,
+      Color backgroundColor = Colors.white,
+      Color textColor = Colors.black}) {
+    return CalculatorButton(
+      label: text,
+      onTap: onTap as void Function(),
+      size: 90,
+      backgroundColor: backgroundColor,
+      labelColor: textColor,
     );
   }
 }
