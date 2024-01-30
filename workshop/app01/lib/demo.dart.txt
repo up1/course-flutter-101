@@ -1,0 +1,23 @@
+Future<int> fetchUserData() async {
+  await Future.delayed(Duration(seconds: 2)); // Simulating an async operation
+  // Uncomment the line below to trigger an error
+  // throw Exception('Error fetching user data');
+  return 42; // Simulating a successful response
+}
+
+void main() {
+  // Handling errors in a Future
+  fetchUserData()
+      .then((value) => print('User data: $value'))
+      .catchError((error) => print('Error fetching user data: $error'));
+
+  // Handling errors in a Stream
+  Stream<int>.periodic(Duration(seconds: 1), (count) => count).map((count) {
+    // Uncomment the line below to trigger an error
+    // if (count == 2) throw Exception('Error in stream');
+    return count;
+  }).listen(
+    (data) => print('Stream data: $data'),
+    onError: (error) => print('Error in stream: $error'),
+  );
+}
