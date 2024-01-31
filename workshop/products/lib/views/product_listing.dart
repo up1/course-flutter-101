@@ -53,8 +53,13 @@ class ProductListingPageState extends State<ProductListingPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Product Listing'),
-      ),
+          title: const Text('Product Listing'),
+          centerTitle: true,
+          titleTextStyle: const TextStyle(
+            color: Colors.black,
+            fontSize: 30,
+            fontWeight: FontWeight.normal,
+          )),
       body: Column(
         children: <Widget>[
           Padding(
