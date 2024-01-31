@@ -26,6 +26,13 @@ class ProductDetailPageState extends State<ProductDetailPage> {
         backgroundColor: Colors.white,
         elevation: 0,
         iconTheme: const IconThemeData(color: Colors.black),
+        // Badge
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.shopping_cart_outlined),
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -66,6 +73,27 @@ class ProductDetailPageState extends State<ProductDetailPage> {
               ),
             ),
             const SizedBox(height: 20),
+            Material(
+              color: Colors.deepPurple,
+              borderRadius: BorderRadius.circular(10),
+              child: InkWell(
+                onTap: () {},
+                borderRadius: BorderRadius.circular(10),
+                child: Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 10,
+                  ),
+                  child: const Text(
+                    'Add to Cart',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                    ),
+                  ),
+                ),
+              ),
+            )
           ],
         ),
       ),
