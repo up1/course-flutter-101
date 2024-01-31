@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:products/models/product.dart';
+import 'package:products/views/product_detail.dart';
 
 class ProductListingPage extends StatefulWidget {
   const ProductListingPage({super.key});
@@ -58,7 +59,7 @@ class ProductListingPageState extends State<ProductListingPage> {
           titleTextStyle: const TextStyle(
             color: Colors.black,
             fontSize: 30,
-            fontWeight: FontWeight.normal,
+            fontWeight: FontWeight.bold,
           )),
       body: Column(
         children: <Widget>[
@@ -87,8 +88,9 @@ class ProductListingPageState extends State<ProductListingPage> {
               itemBuilder: (context, index) {
                 Product product =
                     isSearchStarted ? searchedProducts[index] : products[index];
-                return Card(
-                  margin: const EdgeInsets.all(8),
+                return InkWell(
+                  //margin: const EdgeInsets.all(8),
+                  onTap: () => {},
                   child: Column(
                     children: <Widget>[
                       const Padding(padding: EdgeInsets.all(5)),
