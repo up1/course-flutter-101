@@ -90,7 +90,14 @@ class ProductListingPageState extends State<ProductListingPage> {
                     isSearchStarted ? searchedProducts[index] : products[index];
                 return InkWell(
                   //margin: const EdgeInsets.all(8),
-                  onTap: () => {},
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ProductDetailPage(
+                        product: products[index],
+                      ),
+                    ),
+                  ),
                   child: Column(
                     children: <Widget>[
                       const Padding(padding: EdgeInsets.all(5)),

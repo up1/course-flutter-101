@@ -37,8 +37,9 @@ class ProductDetailPageState extends State<ProductDetailPage> {
                 height: 300,
                 width: double.infinity,
                 fit: BoxFit.cover,
-                placeholder: (context, url) => CircularProgressIndicator(),
-                errorWidget: (context, url, error) => Icon(Icons.error),
+                placeholder: (context, url) =>
+                    const CircularProgressIndicator(),
+                errorWidget: (context, url, error) => const Icon(Icons.error),
               ),
             ),
             const SizedBox(height: 20),
