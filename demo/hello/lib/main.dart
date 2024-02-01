@@ -36,8 +36,9 @@ final GoRouter _router = GoRouter(
         GoRoute(
           path: 'product/:id',
           builder: (BuildContext context, GoRouterState state) {
-            final id = state.pathParameters['id']!.toString();
-            return const ProductDetailScreen(productId: '1');
+            // get value from path or query string
+            var id = state.pathParameters['id'] ?? '';
+            return ProductDetailScreen(productId: id);
           },
         ),
       ],
