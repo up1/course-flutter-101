@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class LoginWidget extends StatelessWidget {
-  const LoginWidget({super.key});
+  const LoginWidget(
+      {super.key,
+      required Null Function() onPasswordVisibilityToggle,
+      required bool passwordVisible});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +30,11 @@ class LoginWidget extends StatelessWidget {
           ),
           const SizedBox(height: 16.0),
           ElevatedButton(
-            onPressed: () => {},
+            onPressed: () => {
+              // Working with navigation to product listing page
+              // User go route
+              context.replace('/main'),
+            },
             child: const Text('Login'),
           ),
         ],
