@@ -52,7 +52,7 @@ final GoRouter _router = GoRouter(
 String? _redirect(BuildContext context, GoRouterState state) {
   final isLoggedIn = AppService.instance.isLogged;
 
-  if (!isLoggedIn) {
+  if (!isLoggedIn && state.matchedLocation != '/') {
     return '/';
   } else if (isLoggedIn && state.matchedLocation == '/') {
     return '/main';
