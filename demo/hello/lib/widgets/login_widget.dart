@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hello/controllers/user_controller.dart';
+import 'package:hello/services/app_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginWidget extends StatefulWidget {
@@ -14,11 +17,7 @@ class _LoginWidgetState extends State<LoginWidget> {
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
 
-  saveLogin(String username) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setBool('isLogin', true);
-    prefs.setString('username', username);
-  }
+  UserController userController = Get.put(UserController());
 
   @override
   Widget build(BuildContext context) {
@@ -54,12 +53,18 @@ class _LoginWidgetState extends State<LoginWidget> {
                   // User go route
                   if (_formLoginKey.currentState!.validate())
                     {
-                      // Store user login status in shared preference
-                      saveLogin(usernameController.text),
-                      context.replace('/main')
+                      // Call login api
+                      userController.loginUser(
+                        usernameController.text,
+                        passwordController.text,
+                      )
                     }
                 },
-                child: const Text('Login'),
+                child: Obx(
+                  () => userController.isLoading.value
+                      ? const CircularProgressIndicator()
+                      : const Text('Login'),
+                ),
               ),
             ],
           )),

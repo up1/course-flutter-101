@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hello/screens/home_screen.dart';
+import 'package:hello/screens/login_screen.dart';
 import 'package:hello/screens/main_screen.dart';
 import 'package:hello/screens/product_detail_screen.dart';
 import 'package:hello/screens/product_listing_screen.dart';
-import 'package:hello/screens/splash_screen.dart';
+import 'package:hello/services/app_service.dart';
 
 // The route configuration.
 final GoRouter _router = GoRouter(
+  redirect: _redirect,
+  refreshListenable: AppService.instance,
+  navigatorKey: AppService.instance.navigatorKey,
   routes: <RouteBase>[
     GoRoute(
       path: '/',
       builder: (BuildContext context, GoRouterState state) {
-        return const SplashScreen();
+        return const LoginScreen();
       },
       routes: <RouteBase>[
         GoRoute(
@@ -59,4 +63,15 @@ class MyApp extends StatelessWidget {
       routerConfig: _router,
     );
   }
+}
+
+String? _redirect(BuildContext context, GoRouterState state) {
+  final isLoggedIn = AppService.instance.isLogged;
+
+  if (!isLoggedIn) {
+    return '/';
+  } else if (isLoggedIn) {
+    return '/main';
+  }
+  return null;
 }

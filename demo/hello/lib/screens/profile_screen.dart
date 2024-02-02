@@ -1,13 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hello/controllers/user_controller.dart';
+import 'package:hello/services/app_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
 
+  @override
+  State<StatefulWidget> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  UserController userController = Get.put(UserController());
+
   removeLogin() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.remove('isLogin');
+    AppService.instance.removeLogin();
   }
 
   @override
@@ -22,7 +31,8 @@ class ProfileScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text('Profile Screen'),
+              Obx(() => Text(
+                  'Profile Screen with user =${userController.user.value.username}')),
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () => {
