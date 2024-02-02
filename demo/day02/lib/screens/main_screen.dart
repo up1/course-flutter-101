@@ -23,7 +23,7 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
         body: _children[_currentIndex],
         bottomNavigationBar: BottomNavigationBar(
-          selectedItemColor: Colors.blue,
+          selectedItemColor: Colors.red,
           unselectedItemColor: Colors.grey,
           currentIndex: _currentIndex,
           onTap: (index) => {

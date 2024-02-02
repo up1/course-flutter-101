@@ -1,5 +1,40 @@
+import 'package:day02/screens/home_screen.dart';
+import 'package:day02/screens/login_screen.dart';
 import 'package:day02/screens/main_screen.dart';
+import 'package:day02/screens/product_listing_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+
+final GoRouter _router = GoRouter(
+  routes: <RouteBase>[
+    GoRoute(
+      path: '/',
+      builder: (BuildContext context, GoRouterState state) {
+        return const LoginScreen();
+      },
+      routes: <RouteBase>[
+        GoRoute(
+          path: 'main',
+          builder: (BuildContext context, GoRouterState state) {
+            return const MainScreen();
+          },
+        ),
+        GoRoute(
+          path: 'home',
+          builder: (BuildContext context, GoRouterState state) {
+            return const HomeScreen();
+          },
+        ),
+        GoRoute(
+          path: 'product_listing',
+          builder: (BuildContext context, GoRouterState state) {
+            return const ProductListingScreen();
+          },
+        ),
+      ],
+    ),
+  ],
+);
 
 void main() {
   runApp(const MyApp());
@@ -11,13 +46,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MainScreen(),
+    return MaterialApp.router(
+      routerConfig: _router,
     );
   }
 }

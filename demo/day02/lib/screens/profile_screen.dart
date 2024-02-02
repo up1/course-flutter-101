@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -20,6 +21,7 @@ class ProfileScreen extends StatelessWidget {
               ElevatedButton(
                 onPressed: () => {
                   // Go back to login screen
+                  context.replace('/')
                 },
                 child: const Text('Log out'),
               ),
