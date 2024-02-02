@@ -10,6 +10,8 @@ class LoginWidget extends StatefulWidget {
 
 class _LoginWidgetState extends State<LoginWidget> {
   final _formLoginKey = GlobalKey<FormState>();
+  final _usernameController = TextEditingController();
+  final _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +23,7 @@ class _LoginWidgetState extends State<LoginWidget> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               TextFormField(
+                controller: _usernameController,
                 validator: (value) => value!.isEmpty ? 'Enter username' : null,
                 decoration: const InputDecoration(
                   labelText: 'Username',
@@ -29,6 +32,7 @@ class _LoginWidgetState extends State<LoginWidget> {
               ),
               const SizedBox(height: 16.0),
               TextFormField(
+                controller: _passwordController,
                 validator: (value) => value!.isEmpty ? 'Enter password' : null,
                 decoration: const InputDecoration(
                   labelText: 'Password',
@@ -39,6 +43,8 @@ class _LoginWidgetState extends State<LoginWidget> {
               const SizedBox(height: 16.0),
               ElevatedButton(
                 onPressed: () => {
+                  print(_usernameController.text),
+
                   // Validate form
                   if (_formLoginKey.currentState!.validate())
                     {
