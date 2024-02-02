@@ -9,29 +9,15 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  bool _passwordVisible = false;
-
-  @override
-  void initState() {
-    _passwordVisible = false;
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: const Text('Login'),
-          centerTitle: true,
-        ),
-        body: LoginWidget(
-          passwordVisible: _passwordVisible,
-          onPasswordVisibilityToggle: () {
-            setState(() {
-              _passwordVisible = !_passwordVisible;
-            });
-          },
-        ));
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        title: const Text('Login'),
+        centerTitle: true,
+      ),
+      body: const LoginWidget(),
+    );
   }
 }

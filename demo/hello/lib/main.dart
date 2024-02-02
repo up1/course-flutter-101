@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hello/screens/home_screen.dart';
-import 'package:hello/screens/login_screen.dart';
 import 'package:hello/screens/main_screen.dart';
 import 'package:hello/screens/product_detail_screen.dart';
 import 'package:hello/screens/product_listing_screen.dart';
+import 'package:hello/screens/splash_screen.dart';
 
 // The route configuration.
 final GoRouter _router = GoRouter(
@@ -12,7 +12,7 @@ final GoRouter _router = GoRouter(
     GoRoute(
       path: '/',
       builder: (BuildContext context, GoRouterState state) {
-        return const LoginScreen();
+        return const SplashScreen();
       },
       routes: <RouteBase>[
         GoRoute(
