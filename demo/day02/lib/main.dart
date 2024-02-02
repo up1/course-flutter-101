@@ -54,7 +54,7 @@ String? _redirect(BuildContext context, GoRouterState state) {
 
   if (!isLoggedIn) {
     return '/';
-  } else if (isLoggedIn) {
+  } else if (isLoggedIn && state.matchedLocation == '/') {
     return '/main';
   }
   return null;
