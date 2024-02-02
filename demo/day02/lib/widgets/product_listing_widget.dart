@@ -15,7 +15,7 @@ class ProductListingWidget extends StatelessWidget {
           trailing: const Icon(Icons.chevron_right),
           onTap: () => {
                 //Go route to detail page with /product/:id
-                context.push('/product/1234')
+                context.push('/product/$index')
               }),
     );
   }
