@@ -1,5 +1,7 @@
+import 'package:day02/app_service.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginWidget extends StatefulWidget {
   const LoginWidget({super.key});
@@ -42,14 +44,12 @@ class _LoginWidgetState extends State<LoginWidget> {
               ),
               const SizedBox(height: 16.0),
               ElevatedButton(
-                onPressed: () => {
-                  print(_usernameController.text),
-
+                onPressed: () async => {
                   // Validate form
                   if (_formLoginKey.currentState!.validate())
                     {
-                      // Get data of form (username, password) ??
-
+                      // Save data with shared preferences
+                      AppService.instance.saveLogin(),
                       // Navigate to main page
                       context.replace('/main'),
                     }

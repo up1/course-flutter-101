@@ -1,3 +1,4 @@
+import 'package:day02/app_service.dart';
 import 'package:day02/screens/home_screen.dart';
 import 'package:day02/screens/login_screen.dart';
 import 'package:day02/screens/main_screen.dart';
@@ -7,6 +8,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 final GoRouter _router = GoRouter(
+  redirect: _redirect,
+  refreshListenable: AppService.instance,
+  navigatorKey: AppService.instance.navigatorKey,
   routes: <RouteBase>[
     GoRoute(
       path: '/',
@@ -44,6 +48,17 @@ final GoRouter _router = GoRouter(
     ),
   ],
 );
+
+String? _redirect(BuildContext context, GoRouterState state) {
+  final isLoggedIn = AppService.instance.isLogged;
+
+  if (!isLoggedIn) {
+    return '/';
+  } else if (isLoggedIn) {
+    return '/main';
+  }
+  return null;
+}
 
 void main() {
   runApp(const MyApp());
