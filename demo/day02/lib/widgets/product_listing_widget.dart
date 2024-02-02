@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class ProductListingWidget extends StatelessWidget {
   const ProductListingWidget({Key? key}) : super(key: key);
@@ -14,6 +15,7 @@ class ProductListingWidget extends StatelessWidget {
           trailing: const Icon(Icons.chevron_right),
           onTap: () => {
                 //Go route to detail page with /product/:id
+                context.push('/product/1234')
               }),
     );
   }

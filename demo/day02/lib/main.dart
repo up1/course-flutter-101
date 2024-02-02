@@ -1,6 +1,7 @@
 import 'package:day02/screens/home_screen.dart';
 import 'package:day02/screens/login_screen.dart';
 import 'package:day02/screens/main_screen.dart';
+import 'package:day02/screens/product_detail_screen.dart';
 import 'package:day02/screens/product_listing_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -31,6 +32,14 @@ final GoRouter _router = GoRouter(
             return const ProductListingScreen();
           },
         ),
+        GoRoute(
+          path: 'product/:id',
+          builder: (BuildContext context, GoRouterState state) {
+            // get value from path or query string
+            var id = state.pathParameters['id'] ?? '';
+            return ProductDetailScreen(productId: id);
+          },
+        )
       ],
     ),
   ],
