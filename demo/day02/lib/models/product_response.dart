@@ -31,13 +31,13 @@ class ProductResponse {
 }
 
 class Products {
-  int? id;
+  num? id;
   String? title;
   String? description;
-  int? price;
-  double? discountPercentage;
-  double? rating;
-  int? stock;
+  num? price;
+  num? discountPercentage;
+  num? rating;
+  num? stock;
   String? brand;
   String? category;
   String? thumbnail;

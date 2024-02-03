@@ -8,11 +8,12 @@ class ProductController extends GetxController {
 
   void getAllProducts() async {
     try {
-      final response = await _productService.fetchAllProduct(50);
+      final response = await _productService.fetchAllProduct(10);
       productResponse.value = response;
     } catch (e) {
       // TODO :: Handle the error
-      print('Failed to get all products: $e');
+      e.printInfo();
+      print('Failed to get all: $e');
     }
   }
 }
