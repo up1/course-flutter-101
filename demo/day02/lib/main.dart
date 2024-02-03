@@ -1,4 +1,5 @@
 import 'package:day02/app_service.dart';
+import 'package:day02/controllers/database_controller.dart';
 import 'package:day02/controllers/product_controller.dart';
 import 'package:day02/controllers/user_controller.dart';
 import 'package:day02/screens/home_screen.dart';
@@ -66,6 +67,7 @@ String? _redirect(BuildContext context, GoRouterState state) {
 void main() {
   Get.put(UserController());
   Get.put(ProductController());
+  Get.put(DatabaseController());
   runApp(const MyApp());
 }
 
