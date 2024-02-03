@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:day02/models/product.dart';
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
 
 class ProductListingWidget extends StatefulWidget {
   const ProductListingWidget({Key? key}) : super(key: key);
@@ -79,25 +80,29 @@ class _ProductListingWidgetState extends State<ProductListingWidget> {
               itemBuilder: (context, index) {
                 Product product =
                     isSearchStarted ? searchedProducts[index] : products[index];
-                return InkWell(
-                  child: Column(
-                    children: <Widget>[
-                      const Padding(padding: EdgeInsets.all(5)),
-                      CachedNetworkImage(
-                        imageUrl: product.imageUrl,
-                        width: 150,
-                        height: 110,
-                        fit: BoxFit.cover,
-                      ),
-                      Text(product.name),
-                      Text(product.description),
-                      Text('\$${product.price.toStringAsFixed(2)}'),
-                    ],
-                  ),
-                );
+                return createItem(product);
               },
             ),
           ),
+        ],
+      ),
+    );
+  }
+
+  Widget createItem(Product product) {
+    return InkWell(
+      child: Column(
+        children: <Widget>[
+          const Padding(padding: EdgeInsets.all(5)),
+          CachedNetworkImage(
+            imageUrl: product.imageUrl,
+            width: 150,
+            height: 110,
+            fit: BoxFit.cover,
+          ),
+          Text(product.name),
+          Text(product.description),
+          Text('\$${product.price.toStringAsFixed(2)}'),
         ],
       ),
     );
