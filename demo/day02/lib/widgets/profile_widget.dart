@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:day02/app_service.dart';
 import 'package:day02/controllers/user_controller.dart';
 import 'package:day02/models/user_response.dart';
@@ -19,9 +20,14 @@ class _ProfileWidgetState extends State<ProfileWidget> {
     return Card(
         child: Padding(
             padding: const EdgeInsets.all(20),
-            child: Column(
-              children: [Text(user.username!), Image.network(user.image!)],
-            )));
+            child: Column(children: [
+              Text(user.username!),
+              CachedNetworkImage(
+                placeholder: (context, url) =>
+                    const CircularProgressIndicator(),
+                imageUrl: user.image!,
+              )
+            ])));
   }
 
   @override
