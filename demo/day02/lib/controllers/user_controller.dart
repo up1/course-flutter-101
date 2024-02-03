@@ -8,6 +8,7 @@ class UserController extends GetxController {
   final UserService _userService = UserService();
   final user = UserResponse().obs;
   final isLoading = false.obs;
+  final errorMessage = "".obs;
 
   void loginUser(String username, String password) async {
     isLoading.value = true;
@@ -26,6 +27,7 @@ class UserController extends GetxController {
     } catch (e) {
       // TODO :: Handle the error
       print('Failed to login: $e');
+      errorMessage.value = "Login failed";
     } finally {
       isLoading.value = false;
     }

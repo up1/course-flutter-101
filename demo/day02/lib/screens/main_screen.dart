@@ -1,7 +1,9 @@
+import 'package:day02/controllers/user_controller.dart';
 import 'package:day02/screens/home_screen.dart';
 import 'package:day02/screens/product_listing_screen.dart';
 import 'package:day02/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -11,6 +13,7 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  UserController userController = Get.put(UserController());
   int _currentIndex = 0;
   final List<Widget> _children = [
     const HomeScreen(),

@@ -12,12 +12,13 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text('Login'),
-        centerTitle: true,
-      ),
-      body: const LoginWidget(),
-    );
+        appBar: AppBar(
+          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+          title: const Text('Login'),
+          centerTitle: true,
+        ),
+        body: const Expanded(
+          child: LoginWidget(),
+        ));
   }
 }

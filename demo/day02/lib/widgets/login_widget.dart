@@ -1,8 +1,8 @@
 import 'package:day02/app_service.dart';
 import 'package:day02/controllers/user_controller.dart';
+import 'package:day02/widgets/popup_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:go_router/go_router.dart';
 
 class LoginWidget extends StatefulWidget {
   const LoginWidget({super.key});
@@ -66,6 +66,15 @@ class _LoginWidgetState extends State<LoginWidget> {
               ),
             ],
           )),
+    );
+  }
+
+  void _showErrorPopup(String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return PopupWidget(message: message);
+      },
     );
   }
 }
