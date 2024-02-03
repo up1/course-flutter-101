@@ -25,7 +25,7 @@ class ProductService {
         throw Exception('Unexpected error occurred');
       }
     } catch (e) {
-      throw Exception('Failed to login: $e');
+      throw Exception('Failed to get all product: $e');
     }
   }
 }
