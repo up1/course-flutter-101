@@ -1,6 +1,8 @@
 import 'package:day02/app_service.dart';
 import 'package:day02/models/user_response.dart';
+import 'package:day02/screens/main_screen.dart';
 import 'package:day02/services/user_service.dart';
+import 'package:day02/widgets/popup_widget.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 
@@ -22,12 +24,12 @@ class UserController extends GetxController {
       AppService.instance.saveLogin();
 
       // Navigate to main page
-      GoRouter.of(AppService.instance.navigatorKey.currentContext!)
-          .replace('/main');
+      Get.offNamed('/main');
     } catch (e) {
       // TODO :: Handle the error
       print('Failed to login: $e');
       errorMessage.value = "Login failed";
+      Get.dialog(PopupWidget(message: errorMessage.value));
     } finally {
       isLoading.value = false;
     }

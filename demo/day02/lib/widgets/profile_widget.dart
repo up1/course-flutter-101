@@ -46,7 +46,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
               // Remove data from shared preferences
               AppService.instance.removeLogin(),
               // Go back to login screen
-              context.replace('/')
+              Get.offNamed('/')
             },
             child: const Text('Log out'),
           ),
