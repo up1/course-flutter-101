@@ -1,7 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:day02/controllers/product_controller.dart';
 import 'package:day02/models/product.dart';
 import 'package:flutter/material.dart';
-import 'package:shimmer/shimmer.dart';
+import 'package:get/get.dart';
 
 class ProductListingWidget extends StatefulWidget {
   const ProductListingWidget({Key? key}) : super(key: key);
@@ -11,6 +12,8 @@ class ProductListingWidget extends StatefulWidget {
 }
 
 class _ProductListingWidgetState extends State<ProductListingWidget> {
+  ProductController userController = Get.put(ProductController());
+
   List<Product> products = [
     Product(
         name: "Prod name 01",

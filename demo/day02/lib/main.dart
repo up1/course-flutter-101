@@ -1,10 +1,13 @@
 import 'package:day02/app_service.dart';
+import 'package:day02/controllers/product_controller.dart';
+import 'package:day02/controllers/user_controller.dart';
 import 'package:day02/screens/home_screen.dart';
 import 'package:day02/screens/login_screen.dart';
 import 'package:day02/screens/main_screen.dart';
 import 'package:day02/screens/product_detail_screen.dart';
 import 'package:day02/screens/product_listing_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 
 final GoRouter _router = GoRouter(
@@ -61,6 +64,8 @@ String? _redirect(BuildContext context, GoRouterState state) {
 }
 
 void main() {
+  Get.put(UserController());
+  Get.put(ProductController());
   runApp(const MyApp());
 }
 
